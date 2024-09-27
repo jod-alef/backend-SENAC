@@ -8,4 +8,4 @@ else:
     elif permissao == "não" or "nao":
         print("Você não pode viajar")
     else:
-        print("Resposta incorreta")
+        print("Resposta incorreta.")
