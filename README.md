@@ -1,1 +1,5 @@
-Repositório com todos os Assignments de BackEnd do Curso Fullstack Python organizados em ordem.
+# Desenvolvimento backend - Python
+## Repositório de assignments
+
+Os Assignments serão organizados em pastas com a seguinte lógica:
+A++
