@@ -2,4 +2,4 @@
 ## Repositório de assignments
 
 Os Assignments serão organizados em pastas com a seguinte lógica:
-A++
+A0 += 1 
