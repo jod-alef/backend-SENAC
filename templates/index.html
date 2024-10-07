@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>toDO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Aluguel de Bike</h1>
+
+    <form action="{{ url_for('bike.adicionar') }}" method="post">
+        <input type="text" name="modelo" placeholder="Insira o modelo" required>
+        <label for="modelo">Escolha um modelo></label>
+        <select id="modelo" name="categoria">
+            <option value="mbike">Mountain Bike</option>
+            <option value="corrida">Corrida</option>
+            <option value="bmx">BMX</option>
+            <option value="passeio">Passeio</option>
+            <option value="downhill">Downhill</option>
+        </select>
+        <input type="number" name="preco" placeholder="Valor da Bicicleta" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul>
+        {% for bike in bikes %}
+        <li>
+            {% if bike.status %}
+            <del>{{loop.index}} - {{ bike.modelo}}</del> - Vendida
+            {% else %}
+            {{ loop.index}} - {{ bike.modelo }} - {{bike.categoria}} - {{bike.preco }} - Em estoque
+            {% endif %}
+            {% if bike.status %}
+            <a href="{{ url_for('bike.remover', bike_id=loop.index0) }}" class="remover">[Remover]</a>
+            {% else %}
+            <a href="{{ url_for('bike.vendida', bike_id=loop.index0) }}">[Vender]</a>
+
+
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
