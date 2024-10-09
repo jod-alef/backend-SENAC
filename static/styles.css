@@ -1,6 +1,5 @@
 body {
     background-color: #f8f9fa;
-    font-family: 'Arial', sans-serif;
 }
 
 h1 {
@@ -22,10 +21,10 @@ form {
     margin-bottom: 2px;
 }
 
-.list-group-item del {
-    color: #dc3545;
-}
-
 .btn {
     margin-left: 5px;
+}
+
+.list-group-item h4 {
+    color: red;
 }

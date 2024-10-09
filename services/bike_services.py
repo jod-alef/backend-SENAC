@@ -28,7 +28,3 @@ class BikeService:
 
     def remover(self, bike_id):
         self.bike.pop(bike_id)
-
-
-
-
