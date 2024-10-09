@@ -12,8 +12,8 @@ class BikeService:
             if bike.modelo == modelo:
                 flash("Erro: Modelo repetido", "error")
                 return
-        if precoint > 100:
-            flash("Erro: Valor não pode ser maior que R$ 100,00", "error")
+        if precoint < 100:
+            flash("Erro: Valor não pode ser menor que R$ 100,00", "error")
             return
 
         nova_bike = Bikes(modelo, categoria, preco, False)
