@@ -17,6 +17,7 @@ def adicionar():
     bike_service.adicionar_bike(modelo, categoria, preco)
     return redirect(url_for("bike.index"))
 
+
 @bike_blueprint.route("/vendida/<int:bike_id>")
 def vendida(bike_id):
     bike_service.vendida(bike_id)

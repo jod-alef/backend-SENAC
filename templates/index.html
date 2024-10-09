@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>toDO</title>
+    <title>Loja de Bicicleta</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -11,9 +11,9 @@
 
     <form action="{{ url_for('bike.adicionar') }}" method="post">
         <input type="text" name="modelo" placeholder="Insira o modelo" required>
-        <label for="modelo">Escolha um modelo></label>
+        <label for="modelo">Escolha uma categoria: </label>
         <select id="modelo" name="categoria">
-            <option value="mbike">Mountain Bike</option>
+            <option value="mountain-bike">Mountain Bike</option>
             <option value="corrida">Corrida</option>
             <option value="bmx">BMX</option>
             <option value="passeio">Passeio</option>
@@ -26,20 +26,28 @@
     <ul>
         {% for bike in bikes %}
         <li>
+
             {% if bike.status %}
-            <del>{{loop.index}} - {{ bike.modelo}}</del> - Vendida
+            <del>{{loop.index}} - {{ bike.modelo}} - {{bike.categoria}} - {{bike.preco }}</del> - Vendida
             {% else %}
             {{ loop.index}} - {{ bike.modelo }} - {{bike.categoria}} - {{bike.preco }} - Em estoque
             {% endif %}
-            {% if bike.status %}
-            <a href="{{ url_for('bike.remover', bike_id=loop.index0) }}" class="remover">[Remover]</a>
-            {% else %}
-            <a href="{{ url_for('bike.vendida', bike_id=loop.index0) }}">[Vender]</a>
+            {% if not bike.status %}
+            <a href="{{ url_for('bike.remover', bike_id=loop.index0) }}" class="remover">[Remover]</a><a href="{{ url_for('bike.vendida', bike_id=loop.index0) }}">[Vender]</a>
 
 
             {% endif %}
         </li>
         {% endfor %}
     </ul>
+{% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 </body>
 </html>
