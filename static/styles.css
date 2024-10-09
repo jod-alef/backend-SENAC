@@ -1,0 +1,31 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    color: #343a40;
+    text-align: center;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 2px;
+}
+
+.list-group-item del {
+    color: #dc3545;
+}
+
+.btn {
+    margin-left: 5px;
+}
