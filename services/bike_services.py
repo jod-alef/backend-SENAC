@@ -5,9 +5,10 @@ class BikeService:
 
     def __init__(self):
         self.bike = []
+        self.quantidade = 0
 
     def adicionar_bike(self, modelo, categoria, preco):
-        precoint = int(preco)
+        precoint = float(preco)
         for bike in self.bike:
             if bike.modelo == modelo:
                 flash("Erro: Modelo repetido", "error")
@@ -25,6 +26,10 @@ class BikeService:
 
     def vendida(self, bike_id):
         self.bike[bike_id].status = True
+        self.quantidade += 1
 
     def remover(self, bike_id):
         self.bike.pop(bike_id)
+
+    def contar(self):
+        return self.quantidade

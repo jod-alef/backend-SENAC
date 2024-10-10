@@ -7,7 +7,8 @@ bike_service = BikeService()
 @bike_blueprint.route("/")
 def index():
     bikes = bike_service.listar_bikes()
-    return render_template("index.html", bikes=bikes)
+    contar = bike_service.contar()
+    return render_template("index.html", bikes=bikes, contar=contar)
 
 @bike_blueprint.route("/adicionar", methods=["POST"])
 def adicionar():

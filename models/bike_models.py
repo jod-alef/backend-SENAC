@@ -2,7 +2,7 @@ class Bikes:
     def __init__(self, modelo, categoria, preco, status):
         self.modelo = modelo
         self.categoria = categoria
-        self.preco = int(preco)
+        self.preco = float(preco)
         self.status = status
 
     def __str__(self):

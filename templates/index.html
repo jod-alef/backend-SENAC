@@ -27,29 +27,32 @@
                      </div>
                     <div class="row">
                         <div class="col-md-8">
-                        <input type="number" class="form-control" name="preco" placeholder="Valor da Bicicleta" required>
+                        <input type="number" class="form-control" step="0.01" name="preco" placeholder="Valor da Bicicleta" required>
                         </div>
                         <div class="col">
                         <button type="submit" class="btn btn-primary mb-3">Adicionar</button>
                         </div>
-                    </div>
+                        <div class="col">
+                            Bikes vendidas: {{ contar }}
+                        </div>
+
 
             </form>
 <br><br>
 
     <ul class="list-group">
         <div class="row text-center">
-                <div class="col-1">#</div><div class="col-2">Modelo</div><div class="col-2">Categoria</div><div class="col-1">Valor</div><div class="col-3"><strong>Status</strong></div><div class="col-3">Ação</div>
+                <div class="col-1">#</div><div class="col-2">Modelo</div><div class="col-2">Categoria</div><div class="col-2">Valor</div><div class="col-2"><strong>Status</strong></div><div class="col-3">Ação</div>
         </div>
         {% for bike in bikes %}
         <li class="list-group-item">
 
             {% if bike.status %}
             <div class="row text-center">
-                <div class="col-1">{{loop.index}}</div><div class="col-2">{{bike.modelo}}</div><div class="col-2">{{bike.categoria}}</div><div class="col-1">{{bike.preco}}</div><div class="col-3"><strong>Vendida</strong></div>
+                <div class="col-1">{{loop.index}}</div><div class="col-2">{{bike.modelo}}</div><div class="col-2">{{bike.categoria}}</div><div class="col-2">R$ {{bike.preco}}</div><div class="col-2"><strong>Vendida</strong></div>
             {% else %}
         <div class="row text-center">
-            <div class="col-1">{{loop.index}}</div><div class="col-2">{{bike.modelo}}</div><div class="col-2">{{bike.categoria}}</div><div class="col-1">{{bike.preco}}</div><div class="col-3">Disponível</div>
+            <div class="col-1">{{loop.index}}</div><div class="col-2">{{bike.modelo}}</div><div class="col-2">{{bike.categoria}}</div><div class="col-2">R$ {{bike.preco}}</div><div class="col-2">Disponível</div>
             {% endif %}
             {% if not bike.status %}
             <div class="col-3"><a href="{{ url_for('bike.remover', bike_id=loop.index0) }}" class="btn btn-danger">Remover</a> <a href="{{ url_for('bike.vendida', bike_id=loop.index0) }}" class="btn btn-warning">Vender</a></div>
