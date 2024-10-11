@@ -6,6 +6,7 @@ class BikeService:
     def __init__(self):
         self.bike = []
         self.quantidade = 0
+        self.valorVendidas = 0
 
     def adicionar_bike(self, modelo, categoria, preco):
         precoint = float(preco)
@@ -27,9 +28,13 @@ class BikeService:
     def vendida(self, bike_id):
         self.bike[bike_id].status = True
         self.quantidade += 1
+        self.valorVendidas += self.bike[bike_id].preco
 
     def remover(self, bike_id):
         self.bike.pop(bike_id)
 
     def contar(self):
         return self.quantidade
+
+    def valor_vendidas(self):
+        return self.valorVendidas
