@@ -11,6 +11,7 @@
 
     <form action="{{ url_for('task.adicionar') }}" method="post">
         <input type="text" name="tarefa" placeholder="Nova tarefa." required>
+        <input type="text" name="prioridade" placeholder="Prioridade">
         <button type="submit">Adicionar</button>
     </form>
 
@@ -20,12 +21,12 @@
             {% if tarefa.completa %}
             <del>{{ loop.index}} - {{ tarefa.conteudo}}</del> - Concluido
             {% else %}
-            {{ loop.index}} - {{ tarefa.conteudo }} - Em andamento
+            {{ loop.index}} - {{ tarefa.conteudo }} - {{tarefa.prioridade}}
             {% endif %}
             {% if tarefa.completa %}
-            <a href="{{ url_for('task.remover', tarefa_id=loop.index0) }}" class="remover">[Remover]</a>
+            <a class="remover" href="{{ url_for('task.remover', tarefa_id=tarefa.id) }}">[Remover]</a>
             {% else %}
-            <a href="{{ url_for('task.completar', tarefa_id=loop.index0) }}">[Alterar status]</a>
+            <a href="{{ url_for('task.completar', tarefa_id=tarefa.id) }}">[Alterar status]</a>
             {% endif %}
         </li>
         {% endfor %}
