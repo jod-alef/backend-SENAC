@@ -11,7 +11,7 @@ class BikeService:
     def adicionar_bike(self, modelo, categoria, preco):
         precoint = float(preco)
         for bike in self.bike:
-            if bike.modelo == modelo:
+            if bike.modelo == modelo and bike.status == False:
                 flash("Erro: Modelo repetido", "error")
                 return
         if precoint < 100:
