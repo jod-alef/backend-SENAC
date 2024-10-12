@@ -23,5 +23,3 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
-# user=postgres.xdaftsgbbbscfrueidzc password=[YOUR-PASSWORD] host=aws-0-sa-east-1.pooler.supabase.com port=6543 dbname=postgres
