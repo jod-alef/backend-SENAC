@@ -19,14 +19,14 @@
         {% for tarefa in tarefas %}
         <li>
             {% if tarefa.completa %}
-            <del>{{ loop.index}} - {{ tarefa.conteudo}}</del> - Concluido
+            <del>{{ loop.index}} - {{ tarefa.conteudo}}</del>
             {% else %}
             {{ loop.index}} - {{ tarefa.conteudo }} - {{tarefa.prioridade}}
             {% endif %}
             {% if tarefa.completa %}
             <a class="remover" href="{{ url_for('task.remover', tarefa_id=tarefa.id) }}">[Remover]</a>
             {% else %}
-            <a href="{{ url_for('task.completar', tarefa_id=tarefa.id) }}">[Alterar status]</a>
+            <a href="{{ url_for('task.completar', tarefa_id=tarefa.id) }}">[Completar]</a>
             {% endif %}
         </li>
         {% endfor %}

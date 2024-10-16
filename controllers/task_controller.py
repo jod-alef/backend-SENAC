@@ -1,9 +1,9 @@
 from flask import render_template, request, url_for, Blueprint, redirect
-import services.task_service
+from services.task_service import TaskService
 
 
 task_blueprint = Blueprint('task', __name__)  # TO NA DUVIDA
-task_service = services.task_service.TaskService()
+task_service = TaskService()
 
 @task_blueprint.route("/")
 def index():
@@ -14,6 +14,9 @@ def index():
 def adicionar():
     conteudo = request.form.get("tarefa")
     prioridade = request.form.get("prioridade", "Média")
+
+    if prioridade == '':
+        prioridade = 'Média'
 
     try:
         task_service.adicionar_tarefa(conteudo, prioridade)
@@ -32,7 +35,7 @@ def completar(tarefa_id):
 
     return redirect(url_for("task.index"))
 
-@task_blueprint.route("/removerw/<int:tarefa_id>")
+@task_blueprint.route("/remover/<int:tarefa_id>")
 def remover(tarefa_id):
     try:
         task_service.remover_tarefa(tarefa_id)

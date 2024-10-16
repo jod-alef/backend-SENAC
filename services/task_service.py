@@ -1,5 +1,5 @@
 from repositories.task_repository import TaskRepository
-from configurations.database import db
+
 
 class TaskService:
     def adicionar_tarefa(self, conteudo, prioridade="Média"):
