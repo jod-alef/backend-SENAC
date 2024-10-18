@@ -6,6 +6,7 @@ from controllers.bike_controller import bike_blueprint
 from urllib.parse import quote
 from dotenv import load_dotenv
 import os
+import logging
 
 
 load_dotenv()
@@ -22,8 +23,11 @@ port = os.getenv('DB_PORT')
 passw = quote(password)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{passw}@{host}:{port}/{db_name}'
-app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = True
-app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = False
+
+logging.basicConfig()
+logging.getLogger("sqlalchemy.engine").setLevel(logging.DEBUG)
 
 db.init_app(app)
 

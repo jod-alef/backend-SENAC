@@ -1,11 +1,10 @@
 from sqlalchemy import text
-from models.bike_models import Bikes
 
 def create_table_bikes(app, db):
     create_table_sql = '''
     CREATE TABLE IF NOT EXISTS bikes (
         id SERIAL PRIMARY KEY,
-        modelo VARCHAR(200) NOT NULL,
+        modelo VARCHAR(200) NOT NULL UNIQUE,
         categoria VARCHAR(200) NOT NULL,
         preco FLOAT(20) NOT NULL,
         status BOOLEAN DEFAULT FALSE    

@@ -39,10 +39,10 @@ class BikeRepository:
     def sum_bikes():
         query = text("SELECT SUM(preco) FROM bikes WHERE status = True")
         soma = db.session.execute(query)
-        return soma.first()   # Explicação do .first
+        return soma.first()   # TODO: Explicação do .first().
 
     @staticmethod
     def count_sold_bikes():
         query = text("SELECT COUNT(id) FROM bikes WHERE status = True")
         resultado = db.session.execute(query)
-        return resultado.first()
+        return resultado.one()
