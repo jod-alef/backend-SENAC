@@ -8,6 +8,7 @@ class Task(db.Model):
     conteudo = db.Column(db.String(200), nullable=False)
     completa = db.Column(db.Boolean, default=False)
     prioridade = db.Column(db.String(50), nullable=False, default="Média")
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
         return f"Tarefa('{self.conteudo}', '{self.completa}', '{self.prioridade}')"

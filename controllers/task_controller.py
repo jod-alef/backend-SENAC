@@ -1,13 +1,18 @@
-from flask import render_template, request, url_for, Blueprint, redirect
+from flask import render_template, request, url_for, Blueprint, redirect, session
 from services.task_service import TaskService
 
 
-task_blueprint = Blueprint('task', __name__)  # TO NA DUVIDA
+task_blueprint = Blueprint('task', __name__, url_prefix='/tarefas')  # TO NA DUVIDA
 task_service = TaskService()
 
-@task_blueprint.route("/")
+@task_blueprint.route("/listar")
 def index():
-    tarefas = task_service.listar_tarefas()
+
+    if 'user_id' not in session:
+        return redirect(url_for('user.login'))
+
+    user_id = session['user_id']
+    tarefas = task_service.listar_tarefas(user_id)
     return render_template("index.html", tarefas=tarefas)
 
 @task_blueprint.route("/adicionar", methods=["POST"])

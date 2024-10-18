@@ -3,15 +3,16 @@ from flask import Flask
 from configurations.sql_commands import create_table_tasks, create_table_users, create_root_user
 from configurations.database import db
 from controllers.task_controller import task_blueprint
+from controllers.user_controller import user_blueprint
 from urllib.parse import quote
 from dotenv import load_dotenv
 import os
 
-from controllers.user_controller import user_blueprint
 
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.getenv('SECRET_KEY')
 app.register_blueprint(task_blueprint)
 app.register_blueprint(user_blueprint)
 

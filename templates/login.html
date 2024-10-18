@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro de Usuário</title>
+    <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 </head>
 <body>
-<h1>Criar Novo Usuário</h1>
+<h1>Login</h1>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
+            <ul class="flashes">
             {% for category, message in messages %}
-                <p>{{ message }}</p>
+                <li class="{{ category }}">{{ message }}</li>
             {% endfor %}
+            </ul>
         {% endif %}
     {% endwith %}
-<form method="post" action="{{ url_for('user.adicionar_usuario'}}">
+<form method="post" action="{{ url_for('user.login'}}">
     <label for="username">Nome do usuário:</label>
     <input type="text" id="username" name="username" required>
     <label for="password">Senha:</label>
     <input type="text" id="password" name="password" required>
 
-    <button type="submit">Criar</button>
+    <button type="submit">Login</button>
 </form>
 </body>
 </html>
