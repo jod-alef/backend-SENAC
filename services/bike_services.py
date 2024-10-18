@@ -1,5 +1,5 @@
 from flask import flash
-from models.bike_models import Bikes
+from repositories.bike_repository import BikeRepository
 
 class BikeService:
 
@@ -18,20 +18,19 @@ class BikeService:
             flash("Erro: Valor não pode ser menor que R$ 100,00", "error")
             return
 
-        nova_bike = Bikes(modelo, categoria, preco, False)
-        self.bike.append(nova_bike)
+        BikeRepository.add_bike(modelo, categoria, preco)
         flash("Bike adicionada com sucesso!", "success")
 
     def listar_bikes(self):
-        return self.bike
+        return BikeRepository.list_bikes()
 
     def vendida(self, bike_id):
-        self.bike[bike_id].status = True
+        BikeRepository.sell_bike(bike_id)
         self.quantidade += 1
         self.valorVendidas += self.bike[bike_id].preco
 
     def remover(self, bike_id):
-        self.bike.pop(bike_id)
+        BikeRepository.delete_bike(bike_id)
 
     def contar(self):
         return self.quantidade

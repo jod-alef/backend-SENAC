@@ -1,4 +1,6 @@
 from flask import Flask
+
+from configurations.sql_commands import create
 from controllers.bike_controller import bike_blueprint
 
 app = Flask(__name__)
