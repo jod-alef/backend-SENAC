@@ -29,3 +29,15 @@ def vendida(bike_id):
 def remover(bike_id):
     bike_service.remover(bike_id)
     return redirect(url_for("bike.index"))
+
+@bike_blueprint.route('/valor_vendidas')
+def valor_vendidas():
+    bike_service.valor_vendidas()
+    return redirect(url_for("bike.index"))
+
+@bike_blueprint.route('/contar')
+def contar():
+    bike_service.contar()
+    return redirect(url_for("bike.index"))
+
+

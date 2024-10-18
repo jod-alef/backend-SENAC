@@ -37,7 +37,7 @@
                             </ul>
                             {% endif %}
                             {% endfor %}
-                            <div class="alert alert-info text-end" role="alert">Valor total: R$ {{ vendidas }}</div>
+                            <div class="alert alert-info text-end" role="alert">Valor total: R$ {{ valor_vendidas }}.</div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -125,8 +125,8 @@
                 <div class="col-2">Disponível</div>
                 {% endif %}
                 {% if not bike.status %}
-                <div class="col-3"><a href="{{ url_for('bike.remover', bike_id=loop.index0) }}" class="btn btn-danger">Remover</a>
-                    <a href="{{ url_for('bike.vendida', bike_id=loop.index0) }}" class="btn btn-warning">Vender</a>
+                <div class="col-3"><a href="{{ url_for('bike.remover', bike_id=bike.id) }}" class="btn btn-danger">Remover</a>
+                    <a href="{{ url_for('bike.vendida', bike_id=bike.id) }}" class="btn btn-warning">Vender</a>
                 </div>
             </div>
 

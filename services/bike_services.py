@@ -26,14 +26,12 @@ class BikeService:
 
     def vendida(self, bike_id):
         BikeRepository.sell_bike(bike_id)
-        self.quantidade += 1
-        self.valorVendidas += self.bike[bike_id].preco
 
     def remover(self, bike_id):
         BikeRepository.delete_bike(bike_id)
 
     def contar(self):
-        return self.quantidade
+        return BikeRepository.count_sold_bikes()
 
     def valor_vendidas(self):
-        return self.valorVendidas
+        return BikeRepository.sum_bikes()

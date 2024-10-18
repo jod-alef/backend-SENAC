@@ -5,7 +5,7 @@ class BikeRepository:
     @staticmethod
     def list_bikes():
         query = text ('SELECT * FROM bikes')
-        result = db.session.execute((query))
+        result = db.session.execute(query)
         return result.fetchall()
 
     @staticmethod
@@ -25,12 +25,24 @@ class BikeRepository:
 
     @staticmethod
     def sell_bike(bike_id):
-        query = text("UPDATE bikes SET vendida = TRUE WHERE id = :id")
+        query = text("UPDATE bikes SET status = TRUE WHERE id = :id")
         db.session.execute(query,{'id': bike_id})
         db.session.commit()
 
     @staticmethod
     def delete_bike(bike_id):
-        query = text('DELETE FROM bikes WHERE id = :id')
-        db.session.execute((query,{'id': bike_id}))
+        query = text("DELETE FROM bikes WHERE id = :id")
+        db.session.execute(query,{'id': bike_id})
         db.session.commit()
+
+    @staticmethod
+    def sum_bikes():
+        query = text("SELECT SUM(preco) FROM bikes WHERE status = True")
+        soma = db.session.execute(query)
+        return soma.first()   # Explicação do .first
+
+    @staticmethod
+    def count_sold_bikes():
+        query = text("SELECT COUNT(id) FROM bikes WHERE status = True")
+        resultado = db.session.execute(query)
+        return resultado.first()
