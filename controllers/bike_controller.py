@@ -30,11 +30,6 @@ def remover(bike_id):
     bike_service.remover(bike_id)
     return redirect(url_for("bike.index"))
 
-@bike_blueprint.route('/bikes_vendidas')
-def vendidas(): # TODO: não pode ser snake_case
-    bike_service.valor_vendidas()
-    return redirect(url_for("bike.index"))
-
 @bike_blueprint.route('/contar')
 def contar():
     bike_service.contar()
