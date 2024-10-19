@@ -30,9 +30,4 @@ def remover(bike_id):
     bike_service.remover(bike_id)
     return redirect(url_for("bike.index"))
 
-@bike_blueprint.route('/contar')
-def contar():
-    bike_service.contar()
-    return redirect(url_for("bike.index"))
-
 
