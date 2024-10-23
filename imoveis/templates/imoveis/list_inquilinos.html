@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Inquilinos</title>
+</head>
+<body>
+<h1>Lista de Inquilinos</h1>
+<ul>
+    {% for inquilino in inquilinos %}
+    <li>{{inquilino.nome}} - {{inquilino.telefone}} - {{inquilino.email}} - {{inquilino.imovel.endereco}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

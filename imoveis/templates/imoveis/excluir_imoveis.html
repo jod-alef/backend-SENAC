@@ -1,0 +1,7 @@
+<h1>Excluir Imóvel</h1>
+<p>Tem certeza que </p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Excluir</button>
+</form>
+<a href="{% url 'list-imoveis' %}">Cancelar</a>

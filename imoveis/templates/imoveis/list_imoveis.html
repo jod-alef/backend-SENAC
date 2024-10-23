@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Imóveis</title>
+</head>
+<body>
+<h1>Lista de Imóveis</h1>
+<table>
+    <thead>
+    <tr>
+    <th>Endereço</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Preço do Aluguel</th>
+    <th>Ações</th>
+    </tr>
+    </thead>
+    {% for imovel in imoveis %}
+    <tr>
+        <td> {{ imovel.endereco }}</td>
+        <td> {{ imovel.cidade }}</td>
+        <td> {{ imovel.estado }}</td>
+        <td> {{ imovel.preco_aluguel }}</td>
+        <td>
+        <a href="{% url 'editar_imovel' imovel.id %}">Editar</a>
+        <a href="{% url 'excluir_imovel' imovel.id %}">Excluir</a>
+    </td>
+    </tr>
+    {% empty %}
+    <tr>
+    <p>Nada encontrado</p>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+
+
+
+</body>
+</html>
