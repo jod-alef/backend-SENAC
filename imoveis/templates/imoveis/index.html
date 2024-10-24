@@ -1,17 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Aluguel de Imóveis INC</title>
-</head>
-<body>
-    <h1> Bem Vindo ao Alugueis INC</h1>
+{% extends 'imoveis/base.html' %}
 
-    <a href="{% url 'list-imoveis' %}">Ver Imoveis</a>
-    <a href="{% url 'list-inquilinos' %}">Ver Inquilinos</a>
+{% block title %}Alugueis INC - Imóveis para alugar{% endblock %}
+{% block content %}
+<h1> Bem Vindo ao Alugueis INC</h1>
+<br><br>
+<a href="{% url 'list-imoveis' %}">Ver Imoveis</a>
+<a href="{% url 'list-inquilinos' %}">Ver Inquilinos</a>
+{% endblock %}
 
-
-</body>
-</html>
 

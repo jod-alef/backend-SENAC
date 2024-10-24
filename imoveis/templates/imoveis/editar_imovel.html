@@ -1,13 +1,12 @@
-<html>
+{% extends 'imoveis/base.html' %}
+{% block title %}Editar Imóveis{% endblock %}
 
-<body>
+{% block content %}
 <h1>Editar Imóvel</h1>
     <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Salvar alterações</button>
+    <button class="btn btn-primary btn-sm" type="submit">Salvar alterações</button>
     </form>
-    <a href="{% url 'list-imoveis' %}">Cancelar</a>
-
-</body>
-</html>
+    <a class="btn btn-danger btn-sm" href="{% url 'list-imoveis' %}">Cancelar</a>
+{% endblock %}

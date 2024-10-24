@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -17,6 +18,7 @@ def list_imoveis(request):
     return render(request, 'imoveis/list_imoveis.html', {'imoveis': imoveis})
 
 
+@login_required
 def editar_imovel(request, imovel_id):
     imovel = get_object_or_404(Imovel, id=imovel_id)
 
@@ -29,6 +31,7 @@ def editar_imovel(request, imovel_id):
     return render(request, 'imoveis/editar_imovel.html', {'form': form})
 
 
+@login_required
 def excluir_imovel(request, imovel_id):
     imovel = get_object_or_404(Imovel, id=imovel_id)
 
@@ -38,6 +41,7 @@ def excluir_imovel(request, imovel_id):
     return render(request, 'imoveis/excluir_imoveis.html', {'imovel': imovel})
 
 
+@login_required
 def list_inquilinos(request):
     inquilinos = Inquilino.objects.all()
     return render(request, 'imoveis/list_inquilinos.html', {'inquilinos': inquilinos})
@@ -57,6 +61,7 @@ def user_login(request):
     return render(request, 'imoveis/login.html')
 
 
+@login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))

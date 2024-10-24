@@ -1,0 +1,16 @@
+{% extends 'imoveis/base.html' %}
+{% block title %}Imoveis INC - Login{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Usuário:</label>
+    <input type="text" name="username" id="username">
+    <label for="password">Senha:</label>
+    <input type="password" name="password" id="password">
+    <button type="submit">Entrar</button>
+</form>
+{% if error %}
+<p style="color:red">Erro no usuário ou senha</p>
+{% endif %}
+{% endblock %}

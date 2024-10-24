@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Imóveis</title>
-</head>
-<body>
-<h1>Lista de Imóveis</h1>
-<table>
+{% extends 'imoveis/base.html' %}
+{% block title %}Lista de Imóveis{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Lista de Imóveis</h1>
+<table class="table table-striped">
     <thead>
     <tr>
     <th>Endereço</th>
     <th>Cidade</th>
     <th>Estado</th>
     <th>Preço do Aluguel</th>
+        {% if request.user.is_authenticated %}
     <th>Ações</th>
+        {% endif %}
     </tr>
     </thead>
     {% for imovel in imoveis %}
@@ -21,23 +20,19 @@
         <td> {{ imovel.endereco }}</td>
         <td> {{ imovel.cidade }}</td>
         <td> {{ imovel.estado }}</td>
-        <td> {{ imovel.preco_aluguel }}</td>
+        <td> R$ {{ imovel.preco_aluguel }}</td>
+        {% if request.user.is_authenticated %} <!-- TODO: Onde consigo ver a sintaxe ou docs desses códigos em html -->
         <td>
-        <a href="{% url 'editar_imovel' imovel.id %}">Editar</a>
-        <a href="{% url 'excluir_imovel' imovel.id %}">Excluir</a>
-    </td>
+            <a class="btn btn-danger btn-sm" href="{% url 'excluir_imovel' imovel.id %}">Excluir</a>
+            <a class="btn btn-warning btn-sm" href="{% url 'editar_imovel' imovel.id %}">Editar</a>
+        </td>
+        {% endif %}
     </tr>
     {% empty %}
     <tr>
-    <p>Nada encontrado</p>
+    <td>Nada encontrado</td>
     </tr>
 
     {% endfor %}
 </table>
-
-
-
-
-
-</body>
-</html>
+{% endblock %}

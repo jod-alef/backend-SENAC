@@ -24,7 +24,6 @@ class Inquilino(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.imovel.endereco}"
 
-
 # Modelo para Alugueis
 
 class Aluguel(models.Model):

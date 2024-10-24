@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Inquilinos</title>
-</head>
-<body>
+{% extends 'imoveis/base.html' %}
+{% block title %} Imóveis INC - Lista de Inquilinos {% endblock %}
+{% block content %}
 <h1>Lista de Inquilinos</h1>
-<ul>
+<table class="table table-striped">
+<thead>
+<tr>
+    <th>Nome</th>
+    <th>Telefone</th>
+    <th>Email</th>
+    <th>Endereço do imóvel</th>
+</tr>
+</thead>
+<tr>
     {% for inquilino in inquilinos %}
-    <li>{{inquilino.nome}} - {{inquilino.telefone}} - {{inquilino.email}} - {{inquilino.imovel.endereco}}</li>
+        <td>{{inquilino.nome}}</td>
+        <td>{{inquilino.telefone}}</td>
+        <td>{{inquilino.email}}</td>
+        <td>{{inquilino.imovel.endereco}}</td>
+        {% empty %}
+        <td>Nada encontrado</td>
     {% endfor %}
-</ul>
-</body>
-</html>
+
+</tr>
+
+</table>
+{% endblock %}
